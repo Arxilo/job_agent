@@ -1,6 +1,11 @@
 from utils.console import console
-from scraper.job_scraper import buscar_ofertas
+from database.db import inicializar_db , guardar_oferta , obtener_por_estado 
 
-trabajos = buscar_ofertas()
+inicializar_db()
+guardar_oferta("Data Analyst Jr", "Google", "Bogotá", "Se busca analista", "https://linkedin.com/job/1", "linkedin")
+guardar_oferta("Data Analyst Jr", "Google", "Bogotá", "Se busca analista", "https://linkedin.com/job/1", "linkedin")
+ofertas = obtener_por_estado("sin_filtrar")
 
-console.print( trabajos, style="bold green")
+console.print(ofertas)
+
+
