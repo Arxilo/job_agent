@@ -6,7 +6,7 @@ import os
 load_dotenv()
 
 
-def filtar_ofertas():
+def filtar_ofertas(perfil):
 
     ofertas = obtener_por_estado("sin_filtrar")
 
@@ -19,9 +19,9 @@ def filtar_ofertas():
             Eres un filtro de ofertas de trabajo. Analiza si esta oferta es relevante para el perfil del usuario.
 
             PERFIL DEL USUARIO:
-            Cargo buscado: Data Analyst
-            Skills: Python, SQL, Power BI
-            Experiencia: 1 año
+            Cargo buscado: {perfil['cargo']}
+            Skills: {perfil['skills']}
+            Experiencia: {perfil['experiencia']}
 
             OFERTA:
             Título: {titulo}
