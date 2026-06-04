@@ -1,0 +1,9 @@
+.env
+docs/CLAUDE.md
+docs/requirements.md
+.venv/
+data/jobs.db
+data/logs/
+data/profile.yaml
+__pycache__/
+*.pyc
