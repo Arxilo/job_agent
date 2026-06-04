@@ -6,7 +6,7 @@ def buscar_ofertas():
         site_name=["linkedin", "indeed"],
         search_term="data analyst",
         location="Colombia",
-        results_wanted= 3,
+        results_wanted= 10,
         hours_old= 96
     )
 
