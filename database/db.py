@@ -29,6 +29,7 @@ def inicializar_db():
     conexion.close()
 
 
+
 def existe_oferta(url):
 
     conexion = sqlite3.connect("data/jobs.db")
@@ -37,6 +38,7 @@ def existe_oferta(url):
     resultado = cursor.fetchone()
     conexion.close()
     return resultado is not None
+
 
 
 def guardar_oferta(titulo, empresa, ubicacion, descripcion, url, plataforma):
@@ -51,5 +53,10 @@ def guardar_oferta(titulo, empresa, ubicacion, descripcion, url, plataforma):
     conexion.close()
 
 
-def obtener_por_estado():
-    pass
+def obtener_por_estado(estado):
+    conexion = sqlite3.connect("data/jobs.db")
+    cursor = conexion.cursor()
+    cursor.execute("SELECT * FROM jobs WHERE estado = ?", (estado,))
+    resultado = cursor.fetchall()
+    conexion.close()
+    return resultado
