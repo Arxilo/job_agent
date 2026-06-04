@@ -33,8 +33,18 @@ def existe_oferta():
     pass
 
 
-def guardar_oferta():
-    pass
+def guardar_oferta(titulo, empresa, ubicacion, descripcion, url, plataforma):
+    
+    conexion = sqlite3.connect("data/jobs.db")
+    cursor = conexion.cursor()
+
+    cursor.execute(
+        "INSERT OR IGNORE INTO jobs (titulo, empresa, ubicacion, descripcion, url, plataforma) VALUES (?,?,?,?,?,?)",
+        (titulo, empresa, ubicacion, descripcion, url, plataforma)
+    )
+
+    conexion.commit()
+    conexion.close()
 
 
 def obtener_por_estado():
