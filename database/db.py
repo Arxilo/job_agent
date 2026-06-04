@@ -60,3 +60,11 @@ def obtener_por_estado(estado):
     resultado = cursor.fetchall()
     conexion.close()
     return resultado
+
+
+def actualizar_estado(id, estado):
+    conexion = sqlite3.connect("data/jobs.db")
+    cursor = conexion.cursor()
+    cursor.execute("UPDATE jobs SET estado = ? WHERE id = ?", (estado, id))
+    conexion.commit()
+    conexion.close()
