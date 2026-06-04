@@ -6,7 +6,7 @@ import os
 load_dotenv()
 
 
-def filtar_ofertas(perfil):
+def filtrar_ofertas(perfil):
 
     ofertas = obtener_por_estado("sin_filtrar")
 
@@ -35,7 +35,7 @@ def filtar_ofertas(perfil):
 
         client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
         response = client.models.generate_content(
-            model="gemini-3.5-flash",
+            model="gemini-2.0-flash",
             contents=prompt
         )
 
