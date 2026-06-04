@@ -29,20 +29,24 @@ def inicializar_db():
     conexion.close()
 
 
-def existe_oferta():
-    pass
+def existe_oferta(url):
+
+    conexion = sqlite3.connect("data/jobs.db")
+    cursor = conexion.cursor()
+    cursor.execute("SELECT id FROM jobs WHERE url = ?", (url,))
+    resultado = cursor.fetchone()
+    conexion.close()
+    return resultado is not None
 
 
 def guardar_oferta(titulo, empresa, ubicacion, descripcion, url, plataforma):
     
     conexion = sqlite3.connect("data/jobs.db")
     cursor = conexion.cursor()
-
     cursor.execute(
         "INSERT OR IGNORE INTO jobs (titulo, empresa, ubicacion, descripcion, url, plataforma) VALUES (?,?,?,?,?,?)",
         (titulo, empresa, ubicacion, descripcion, url, plataforma)
     )
-
     conexion.commit()
     conexion.close()
 
